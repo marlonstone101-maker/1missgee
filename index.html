@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1miss_gee | Luxury Amazon Finds & Curated Collection</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* =========================================================
+       LUXURY VIOLET & GOLD AMAZON-AFFILIATE PALETTE
+       ========================================================= */
+    :root {
+      --bg-dark: #0a0510;
+      --bg-card: #140b1f;
+      --bg-card-hover: #1c102c;
+      --purple-primary: #8a2be2;
+      --purple-vibrant: #9333ea;
+      --purple-glow: #c084fc;
+      --pink-glam: #ec4899;
+      --gold-accent: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-purple: rgba(147, 51, 234, 0.2);
+      --amazon-yellow: #febd69;
+      --amazon-orange: #ff9900;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: 60px;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(138, 43, 226, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 85% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    /* =========================================================
+       HEADER & NAVIGATION (RESPONSIVE STICKY BAR)
+       ========================================================= */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 5, 16, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-purple);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand-logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--purple-glow);
+      box-shadow: 0 0 12px rgba(192, 132, 252, 0.4);
+      flex-shrink: 0;
+    }
+
+    .brand-title-group {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff 0%, var(--pink-glam) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-subtitle {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .hamburger-btn {
+      background: rgba(147, 51, 234, 0.15);
+      border: 1px solid rgba(192, 132, 252, 0.3);
+      color: var(--purple-glow);
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger-btn:hover {
+      background: var(--purple-vibrant);
+      color: #fff;
+    }
+
+    /* =========================================================
+       SIDEBAR / HAMBURGER DRAWER
+       ========================================================= */
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .sidebar-drawer {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 280px;
+      height: 100%;
+      background: #12091d;
+      border-left: 1px solid var(--border-purple);
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.3s ease;
+      box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+    }
+
+    .sidebar-overlay.active .sidebar-drawer {
+      right: 0;
+    }
+
+    .sidebar-header {
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-purple);
+    }
+
+    .sidebar-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--purple-glow);
+    }
+
+    .close-sidebar-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .sidebar-links {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+      overflow-y: auto;
+    }
+
+    .sidebar-link-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-purple);
+      color: var(--text-main);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-link-btn.active, .sidebar-link-btn:hover {
+      background: linear-gradient(135deg, var(--purple-primary), var(--pink-glam));
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
+    }
+
+    .sidebar-admin-btn {
+      margin-top: auto;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--gold-accent);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-admin-btn:hover {
+      background: var(--gold-accent);
+      color: #111;
+    }
+
+    /* =========================================================
+       STOREFRONT HERO BANNER
+       ========================================================= */
+    .storefront-hero {
+      padding: 28px 16px 16px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .storefront-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--gold-accent);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .storefront-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .storefront-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       AMAZON-STYLE FLUID PRODUCT GRID
+       ========================================================= */
+    .products-wrapper {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 12px;
+    }
+
+    @media (min-width: 640px) {
+      .products-wrapper {
+        padding: 0 16px;
+      }
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    @media (min-width: 640px) {
+      .product-grid {
+        gap: 16px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-purple);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(147, 51, 234, 0.25);
+      border-color: var(--purple-glow);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      z-index: 2;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .image-container {
+      width: 100%;
+      padding-top: 100%;
+      position: relative;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .product-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    @media (min-width: 640px) {
+      .product-info {
+        padding: 14px;
+      }
+    }
+
+    .product-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      height: 2.6em;
+      line-height: 1.3em;
+    }
+
+    @media (min-width: 640px) {
+      .product-title {
+        font-size: 0.875rem;
+      }
+    }
+
+    .product-description {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      height: 2.6em;
+      line-height: 1.3em;
+    }
+
+    @media (min-width: 640px) {
+      .product-description {
+        font-size: 0.775rem;
+      }
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 6px;
+      font-size: 0.7rem;
+      color: var(--gold-accent);
+    }
+
+    .rating-count {
+      color: var(--text-muted);
+      font-size: 0.65rem;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 3px;
+      margin-top: auto;
+      margin-bottom: 10px;
+    }
+
+    .currency {
+      font-size: 0.7rem;
+      color: var(--text-main);
+      vertical-align: top;
+    }
+
+    .price-main {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    @media (min-width: 640px) {
+      .price-main {
+        font-size: 1.2rem;
+      }
+    }
+
+    .prime-tag {
+      color: #00a8e8;
+      font-size: 0.65rem;
+      font-weight: 800;
+      font-style: italic;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .buy-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      background: linear-gradient(135deg, #f0c14b, #f7ca45);
+      color: #111;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 8px 0;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(240, 193, 75, 0.25);
+      border: 1px solid #a88734;
+    }
+
+    @media (min-width: 640px) {
+      .buy-button {
+        font-size: 0.8rem;
+        padding: 10px 0;
+        border-radius: 8px;
+      }
+    }
+
+    .buy-button:hover {
+      background: linear-gradient(135deg, #f7ca45, #e4b93b);
+    }
+
+    /* =========================================================
+       ADMIN MODAL & CONTROL PANEL
+       ========================================================= */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .admin-card {
+      background: #12091d;
+      border: 1px solid var(--purple-vibrant);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 480px;
+      padding: 18px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 0 30px rgba(147, 51, 234, 0.4);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    @media (min-width: 640px) {
+      .admin-card {
+        padding: 24px;
+        border-radius: 20px;
+      }
+    }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-purple);
+    }
+
+    .admin-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--purple-glow);
+    }
+
+    .close-modal-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .form-control {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-purple);
+      border-radius: 8px;
+      padding: 9px 12px;
+      color: #fff;
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--purple-glow);
+      box-shadow: 0 0 8px rgba(147, 51, 234, 0.4);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .admin-submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--purple-vibrant), var(--pink-glam));
+      color: #fff;
+      border: none;
+      padding: 11px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+
+    .admin-items-list {
+      margin-top: 20px;
+      border-top: 1px solid var(--border-purple);
+      padding-top: 14px;
+    }
+
+    .admin-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.82rem;
+    }
+
+    .delete-item-btn {
+      background: #ef4444;
+      color: #fff;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* =========================================================
+       FOOTER STYLING
+       ========================================================= */
+    .site-footer {
+      text-align: center;
+      padding: 24px 16px;
+      margin-top: 40px;
+      border-top: 1px solid var(--border-purple);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+
+    .site-footer p {
+      margin-bottom: 4px;
+    }
+
+    .site-footer span {
+      color: var(--purple-glow);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       TOP NAVBAR
+       ========================================================= -->
+  <header class="top-bar">
+    <a href="#" class="brand-logo-wrapper">
+      <img src="logo.png" alt="1miss_gee Logo" class="brand-logo-img" id="navLogo" onerror="this.src='https://via.placeholder.com/100?text=Logo'">
+      <div class="brand-title-group">
+        <span class="brand-title">1miss_gee</span>
+        <span class="brand-subtitle">Amazon Affiliate</span>
+      </div>
+    </a>
+    <button class="hamburger-btn" id="openSidebarBtn" aria-label="Open Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- =========================================================
+       SIDEBAR DRAWER & MENU
+       ========================================================= -->
+  <div class="sidebar-overlay" id="sidebarOverlay">
+    <nav class="sidebar-drawer">
+      <div class="sidebar-header">
+        <h3 class="sidebar-title"><i class="fa-solid fa-compass"></i> Navigation</h3>
+        <button class="close-sidebar-btn" id="closeSidebarBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="sidebar-links">
+        <button class="sidebar-link-btn active" onclick="filterCategory('All')">
+          <i class="fa-solid fa-sparkles"></i> ✨ All Finds
+        </button>
+        <button class="sidebar-link-btn" onclick="filterCategory('Fashion')">
+          <i class="fa-solid fa-shoe-prints"></i> 👠 Fashion & Glam
+        </button>
+        <button class="sidebar-link-btn" onclick="filterCategory('Bags')">
+          <i class="fa-solid fa-bag-shopping"></i> 👜 Bags & Shoes
+        </button>
+        <button class="sidebar-link-btn" onclick="filterCategory('Food & Kitchen')">
+          <i class="fa-solid fa-wine-glass"></i> 🍷 Food Innovation
+        </button>
+        <button class="sidebar-link-btn" onclick="filterCategory('Lifestyle')">
+          <i class="fa-solid fa-gem"></i> 💎 Memorable Finds
+        </button>
+
+        <button class="sidebar-admin-btn" id="openAdminBtn">
+          <i class="fa-solid fa-lock"></i> Admin Portal
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- =========================================================
+       STOREFRONT HERO BANNER
+       ========================================================= -->
+  <section class="storefront-hero">
+    <div class="storefront-badge">
+      <i class="fa-solid fa-crown"></i> Curated Luxury Finds
+    </div>
+    <h1 class="storefront-heading">Handpicked Amazon Favorites</h1>
+    <p class="storefront-desc">
+      Explore top-tier viral products, luxury fashion, chic accessories, and lifestyle essentials recommended by 1miss_gee. Shop securely directly through Amazon. ✨💎
+    </p>
+  </section>
+
+  <!-- =========================================================
+       PRODUCTS GRID SECTION (AMAZON STYLE)
+       ========================================================= -->
+  <main class="products-wrapper">
+    <div class="product-grid" id="productGrid">
+      <!-- Products render dynamically -->
+    </div>
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="site-footer">
+    <p>&copy; 2026 All Rights Reserved.</p>
+    <p>Site by <span>M.S Media</span></p>
+  </footer>
+
+  <!-- =========================================================
+       ADMIN MODAL FOR UPLOADING AFFILIATE LINKS & DETAILS
+       ========================================================= -->
+  <div class="modal-overlay" id="adminModal">
+    <div class="admin-card">
+      <div class="admin-header">
+        <h3 class="admin-title"><i class="fa-solid fa-sliders"></i> Admin Uploader</h3>
+        <button class="close-modal-btn" id="closeAdminBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form id="addProductForm">
+        <div class="form-group">
+          <label>Product Name / Title *</label>
+          <input type="text" id="pTitle" class="form-control" placeholder="e.g. Diamond Luxury Shoulder Bag" required>
+        </div>
+        <div class="form-group">
+          <label>Category *</label>
+          <select id="pCategory" class="form-control">
+            <option value="Fashion">Fashion & Glam</option>
+            <option value="Bags">Bags & Shoes</option>
+            <option value="Food & Kitchen">Food Innovation</option>
+            <option value="Lifestyle">Memorable Finds</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Product Description *</label>
+          <textarea id="pDesc" class="form-control" placeholder="Add a short, catchy product description..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Price ($ USD) *</label>
+          <input type="text" id="pPrice" class="form-control" placeholder="e.g. 49.99" required>
+        </div>
+        <div class="form-group">
+          <label>Amazon Product Image URL *</label>
+          <input type="url" id="pImg" class="form-control" placeholder="Paste Amazon product image link..." required>
+        </div>
+        <div class="form-group">
+          <label>Amazon Affiliate Link *</label>
+          <input type="url" id="pLink" class="form-control" placeholder="Paste your Amazon affiliate link..." required>
+        </div>
+        <div class="form-group">
+          <label>Badge (Optional)</label>
+          <input type="text" id="pBadge" class="form-control" placeholder="e.g. TikTok Viral, Hot Deal">
+        </div>
+        <button type="submit" class="admin-submit-btn"><i class="fa-solid fa-plus"></i> Publish Product</button>
+      </form>
+
+      <!-- MANAGING EXISTING PRODUCTS -->
+      <div class="admin-items-list">
+        <h4 style="font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Manage Store Items</h4>
+        <div id="adminItemsContainer">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT FOR DYNAMIC FUNCTIONALITY & PERSISTENCE
+       ========================================================= -->
+  <script>
+    // INITIAL DEFAULT PRODUCTS
+    const defaultProducts = [
+      {
+        id: 1,
+        title: "Glitter Rhinestone Evening Shoulder Bag & Clutch",
+        description: "Stunning sparkling evening clutch designed to elevate any glam outfit or special night out.",
+        category: "Bags",
+        price: "38.99",
+        image: "https://m.media-amazon.com/images/I/71R2eT3n5TL._AC_UY695_.jpg",
+        link: "https://amazon.com",
+        badge: "TikTok Viral",
+        rating: 4.8,
+        reviews: 320
+      },
+      {
+        id: 2,
+        title: "Sparkly Crystal Slip On Heels & Slipper Set",
+        description: "Luxurious crystal-embellished transparent heels offering both high fashion and comfort.",
+        category: "Bags",
+        price: "65.00",
+        image: "https://m.media-amazon.com/images/I/71wLpDSpJ2L._AC_UY695_.jpg",
+        link: "https://amazon.com",
+        badge: "Trending",
+        rating: 4.9,
+        reviews: 512
+      },
+      {
+        id: 3,
+        title: "Luxury Ambient Sunset LED Corner Lamp",
+        description: "Create the ultimate aesthetic room ambiance with adjustable sunset and violet lighting modes.",
+        category: "Lifestyle",
+        price: "42.50",
+        image: "https://m.media-amazon.com/images/I/61y8B3pM+PL._AC_SL1500_.jpg",
+        link: "https://amazon.com",
+        badge: "Must Have",
+        rating: 4.7,
+        reviews: 189
+      },
+      {
+        id: 4,
+        title: "Gourmet Electric Wine Opener & Aerator Set",
+        description: "Sleek automatic wine opener set for effortless entertaining and culinary innovation at home.",
+        category: "Food & Kitchen",
+        price: "29.99",
+        image: "https://m.media-amazon.com/images/I/61N+E2qT9+L._AC_SL1500_.jpg",
+        link: "https://amazon.com",
+        badge: "Best Seller",
+        rating: 4.8,
+        reviews: 940
+      }
+    ];
+
+    // Load from LocalStorage or default
+    let products = JSON.parse(localStorage.getItem('1miss_gee_affiliate_products')) || defaultProducts;
+    let currentCategory = 'All';
+
+    // RENDER PRODUCTS GRID
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+
+      const filtered = currentCategory === 'All' 
+        ? products 
+        : products.filter(p => p.category === currentCategory);
+
+      if(filtered.length === 0) {
+        grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; padding:40px; color:var(--text-muted);">No products found in this category.</p>`;
+        return;
+      }
+
+      filtered.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+          <div class="image-container">
+            <img src="${product.image}" alt="${product.title}" class="product-image" onerror="this.src='https://via.placeholder.com/300?text=Product+Image'">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">${product.title}</h3>
+            <p class="product-description">${product.description || ''}</p>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+              <span class="rating-count">(${product.reviews || 100})</span>
+            </div>
+            <div class="price-row">
+              <span class="currency">$</span>
+              <span class="price-main">${product.price}</span>
+              <span class="prime-tag"><i class="fa-solid fa-check" style="color:#00a8e8;"></i> prime</span>
+            </div>
+            <a href="${product.link}" target="_blank" class="buy-button">
+              <span>View on Amazon</span>
+              <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.65rem;"></i>
+            </a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      renderAdminList();
+    }
+
+    // FILTER CATEGORY & CLOSE SIDEBAR ON MOBILE
+    function filterCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.sidebar-link-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick').includes(cat));
+      });
+      document.getElementById('sidebarOverlay').classList.remove('active');
+      renderProducts();
+    }
+
+    // SIDEBAR DRAWER TOGGLES
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    document.getElementById('openSidebarBtn').onclick = () => sidebarOverlay.classList.add('active');
+    document.getElementById('closeSidebarBtn').onclick = () => sidebarOverlay.classList.remove('active');
+    sidebarOverlay.onclick = (e) => {
+      if(e.target === sidebarOverlay) sidebarOverlay.classList.remove('active');
+    };
+
+    // ADMIN MODAL & PASSCODE LOGIC
+    const modal = document.getElementById('adminModal');
+    document.getElementById('openAdminBtn').onclick = () => {
+      const passcode = prompt("Enter Admin Passcode:");
+      if(passcode === "1113") {
+        sidebarOverlay.classList.remove('active');
+        modal.classList.add('active');
+      } else if (passcode !== null) {
+        alert("Incorrect passcode!");
+      }
+    };
+    document.getElementById('closeAdminBtn').onclick = () => modal.classList.remove('active');
+
+    // ADD PRODUCT FORM SUBMISSION
+    document.getElementById('addProductForm').onsubmit = (e) => {
+      e.preventDefault();
+      const newProduct = {
+        id: Date.now(),
+        title: document.getElementById('pTitle').value,
+        category: document.getElementById('pCategory').value,
+        description: document.getElementById('pDesc').value,
+        price: document.getElementById('pPrice').value,
+        image: document.getElementById('pImg').value,
+        link: document.getElementById('pLink').value,
+        badge: document.getElementById('pBadge').value,
+        rating: 5.0,
+        reviews: Math.floor(Math.random() * 80) + 15
+      };
+
+      products.unshift(newProduct);
+      localStorage.setItem('1miss_gee_affiliate_products', JSON.stringify(products));
+      renderProducts();
+      e.target.reset();
+      alert('New product successfully published to your Amazon storefront!');
+    };
+
+    // RENDER ADMIN MANAGE LIST & DELETE
+    function renderAdminList() {
+      const adminContainer = document.getElementById('adminItemsContainer');
+      adminContainer.innerHTML = '';
+      
+      if(products.length === 0) {
+        adminContainer.innerHTML = `<p style="font-size:0.78rem; color:var(--text-muted);">No items added yet.</p>`;
+        return;
+      }
+
+      products.forEach(p => {
+        const row = document.createElement('div');
+        row.className = 'admin-item-row';
+        row.innerHTML = `
+          <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:210px;">${p.title}</span>
+          <button class="delete-item-btn" onclick="deleteProduct(${p.id})">Delete</button>
+        `;
+        adminContainer.appendChild(row);
+      });
+    }
+
+    function deleteProduct(id) {
+      if(confirm('Are you sure you want to remove this item from your store?')) {
+        products = products.filter(p => p.id !== id);
+        localStorage.setItem('1miss_gee_affiliate_products', JSON.stringify(products));
+        renderProducts();
+      }
+    }
+
+    // INITIAL STORE LOAD
+    renderProducts();
+  </script>
+</body>
+</html>
