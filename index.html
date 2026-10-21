@@ -216,6 +216,7 @@
       align-items: center;
       gap: 10px;
       transition: all 0.3s ease;
+      text-decoration: none;
     }
 
     .sidebar-link-btn.active, .sidebar-link-btn:hover {
@@ -223,6 +224,30 @@
       color: #fff;
       border-color: transparent;
       box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
+    }
+
+    .sidebar-tiktok-btn {
+      background: rgba(236, 72, 153, 0.1);
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .sidebar-tiktok-btn:hover {
+      background: #00f2fe;
+      color: #000;
+      border-color: #00f2fe;
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
     }
 
     .sidebar-admin-btn {
@@ -799,6 +824,11 @@
         <button class="sidebar-link-btn" onclick="filterCategory('Lifestyle')">
           <i class="fa-solid fa-gem"></i> 💎 Memorable Finds
         </button>
+
+        <!-- TikTok Social Link -->
+        <a href="https://www.tiktok.com/@1miss_gee" target="_blank" class="sidebar-tiktok-btn">
+          <i class="fa-brands fa-tiktok"></i> Go To TikTok (@1miss_gee)
+        </a>
 
         <button class="sidebar-admin-btn" id="openAdminBtn">
           <i class="fa-solid fa-lock"></i> Admin Portal
